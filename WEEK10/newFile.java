@@ -1,19 +1,71 @@
-import java.io.File;
-
-class newFile {
-    public static void main(String[] args) {
+import java.util.*;
+import java.io.*;
+import java.lang.Exception;
+class newFile 
+{
+    public static void main(String[] args)throws Exception
+    {
+        Scanner sc=new Scanner(System.in);
+        ArrayList<String> newLines=new ArrayList<>();
         try {
-            File NewFile=new File("New/file1.txt");
-            if(NewFile.createNewFile()){
-                System.out.println("Created Successfully");
+            String newf=new String();
+            System.out.println("Enter file name");
+            newf=sc.next();                                 //input for new file name
+            File fileobj=new File(newf);                    //creating new object for new file
+            if(fileobj.createNewFile())                     //either file is created or checks for its existence
+            {
+                System.out.println("Successfully created file");
             }
             else
             {
-                System.out.println("undhu file mool undathe ");
+                System.out.println("File Alreadt exist");
             }
+            FileWriter writers=new FileWriter(fileobj);         
+            System.out.println("Give an input");
+            String chars=new String();            //takes input for new file
+            chars=sc.nextLine();
+            chars=sc.nextLine();
+            writers.write(chars);
+            writers.close();
+            FileReader reads=new FileReader(fileobj); //Creating object to read from file
+            Scanner scObj=new Scanner(reads);
             
-        } catch (Exception e) {
-            System.out.println("Daadana error");
+            File secObj=new File("outputFile.txt");//Create another file
+            secObj.createNewFile();
+            System.out.println("--Contents in First file--");
+            while(scObj.hasNextLine())
+            {
+                String lines=scObj.nextLine();
+                newLines.add(lines);        //insert into array list while reading each lines
+                System.out.println(lines);  //display the contents
+            }
+            scObj.close();
+            Collections.sort(newLines);//sort the contents inside arraylist
+            //Write into another file
+            FileWriter ryt=new FileWriter("outputFile.txt");
+            for (String x : newLines)
+            {
+                ryt.write(x);
+                
+            }
+            ryt.close();
+           System.out.println("--After sorting--");
+           File fread=new File("outputFile.txt");
+            Scanner x=new Scanner(fread);
+            System.out.println("--Contents in Output file--");
+            while(x.hasNextLine())
+            {
+                String s=x.nextLine();
+                System.out.println(s);
+            }
+           sc.close();
+
+           x.close();
+        } 
+        catch (Exception e) 
+        {
+            System.out.println("Not created");
         }
+    sc.close();
     }
 }
