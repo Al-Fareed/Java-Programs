@@ -5,8 +5,8 @@ class Employee implements Cloneable
     String name,des;
     int id;
     double sal;
-    Employee cloning(){
-        return super.clone();  
+    Employee cloning() throws CloneNotSupportedException{
+        return (Employee) super.clone();  
     }
     void getData()
     {
@@ -28,7 +28,7 @@ class Employee implements Cloneable
     }
 }
 class EmpClone{
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         Employee e=new Employee();
         e.getData();
         e.dispData();

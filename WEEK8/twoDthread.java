@@ -43,6 +43,8 @@ import java.lang.Runnable;
 }
 class Trow implements Runnable{
     int t[][]=new int[10][10];
+    public 
+    int Tsum=0;
     Trow(int a[][])
     {
        // super(a);
@@ -50,7 +52,7 @@ class Trow implements Runnable{
     }
     public void run()
     {
-        int Tsum=0;
+       
         for (int i = 2; i < 3; i++) 
         {
            for(int j=0;j<3;j++)
@@ -90,6 +92,9 @@ public class twoDthread extends Exception{
         t2.start();
         t2.join();
         t3.start();
+        t3.join();
+        int total=f.Fsum+s.Ssum+t.Tsum;
+        System.out.println("Total sum of elements in matrix is:"+total);
         sc.close();
     }
     catch(InterruptedException e)

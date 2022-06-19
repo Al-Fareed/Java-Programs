@@ -12,6 +12,11 @@ class OneDmArray
         {
             System.out.println("Enter the number of elements in arrays:");
             n=sc.nextInt();
+            if(n>5)
+               { 
+                sc.close();
+                throw new ArrayIndexOutOfBoundsException();
+            }
             System.out.println("Enter the array 1:");
             for(int i=0;i<n;i++){
                 a[i]=sc.nextInt();
@@ -24,7 +29,7 @@ class OneDmArray
                 c[i]=a[i]/b[i];
                 System.out.print(" "+c[i]);
             }
-        }
+    }
         catch(ArrayIndexOutOfBoundsException e)
         {
             System.out.println("Naal'dh jaasti aapuji anna..!");

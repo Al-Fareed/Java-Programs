@@ -18,15 +18,15 @@ class newFile
             }
             else
             {
-                System.out.println("File Alreadt exist");
+                System.out.println("File Already exist");
             }
-            FileWriter writers=new FileWriter(fileobj);         
-            System.out.println("Give an input");
-            String chars=new String();            //takes input for new file
-            chars=sc.nextLine();
-            chars=sc.nextLine();
-            writers.write(chars);
-            writers.close();
+            // FileWriter writers=new FileWriter(fileobj);         
+            // System.out.println("Give an input");
+            // String chars=new String();            //takes input for new file
+            // chars=sc.nextLine();
+            // chars=sc.nextLine();
+            // writers.write(chars);
+            // writers.close();
             FileReader reads=new FileReader(fileobj); //Creating object to read from file
             Scanner scObj=new Scanner(reads);
             
@@ -39,8 +39,11 @@ class newFile
                 newLines.add(lines);        //insert into array list while reading each lines
                 System.out.println(lines);  //display the contents
             }
+            
+            Collections.sort(newLines);
+            System.out.println("Sorting arraylist:"+newLines);
             scObj.close();
-            Collections.sort(newLines);//sort the contents inside arraylist
+            //sort the contents inside arraylist
             //Write into another file
             FileWriter ryt=new FileWriter("outputFile.txt");
             for (String x : newLines)
@@ -66,6 +69,5 @@ class newFile
         {
             System.out.println("Not created");
         }
-    sc.close();
     }
 }

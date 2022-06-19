@@ -1,10 +1,10 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.lang.Exception;
 class MarksOutOfBoundException extends Exception{
-	String msg;
 	MarksOutOfBoundException()
 	{
-		msg="";
+		super();
 	}
 }
  class Marks extends MarksOutOfBoundException
@@ -14,7 +14,7 @@ class MarksOutOfBoundException extends Exception{
 	double per;
 	String grade,name;
 	
-	void getData() throws MarksOutOfBoundException
+	void getData() throws NumberFormatException
 	{
 		System.out.println("Enter the Roll No of the Student:");
 		rollNo=sc.nextInt();
@@ -31,6 +31,7 @@ class MarksOutOfBoundException extends Exception{
 	
 	void checkData() throws MarksOutOfBoundException 
 	{
+			
 		if(m1>100 || m2>100 || m3>100 || m1<0 || m2<0 || m3<0)
 		{
 			throw new MarksOutOfBoundException();
@@ -83,10 +84,17 @@ public class Student {
 		Marks m=new Marks();
 		
 		try {
-		m.getData();
-		m.getMarks();
-		m.checkData();
-		m.display();	
+			m.getData();
+			m.getMarks();
+			m.checkData();
+			m.display();	
+		}
+		catch(NumberFormatException e)
+		{
+			System.out.println("Number Format Exception!");
+			m.getMarks();
+			m.checkData();
+			m.display();
 		}
 		catch(MarksOutOfBoundException e)
 		{
@@ -95,12 +103,9 @@ public class Student {
 			m.checkData();
 			m.display();
 		}
-		catch(NumberFormatException e)
+		catch(InputMismatchException e)
 		{
-			System.out.println("Number Format Exception!");
-			m.getMarks();
-			m.checkData();
-			m.display();
+			System.out.println("Invalid type of entry..");
 		}
 }
 }
