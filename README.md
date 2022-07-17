@@ -1,2 +1,2 @@
-# MCA-JAVA
-Java Programs in MCA
+#JAVA Programs
+Basic Java Programs to advanced level
